@@ -37,18 +37,18 @@ public class BinaryTreeOperations {
 		
 	}
 	
-	static void InorderRecursive(BinaryTreeNode root)  
+	static void inOrderRecursive(BinaryTreeNode root)  
 	{  
 	    if (root == null)  
 	        return;  
 	    else {  
-	    	InorderRecursive(root.getLeft());  
+	    	inOrderRecursive(root.getLeft());  
 	        System.out.print( root.getData() +" ");  
-	        InorderRecursive(root.getRight());  
+	        inOrderRecursive(root.getRight());  
 	    }  
 	} 
 	
-	static void InorderNonRecursive(BinaryTreeNode root) {
+	static void inOrderNonRecursive(BinaryTreeNode root) {
 		
 		BinaryTreeNode currentNode = root;
 		Stack<BinaryTreeNode> binaryTreeStack = new Stack<BinaryTreeNode>();
@@ -69,6 +69,38 @@ public class BinaryTreeOperations {
 		
 	}
 	
+	static void preOrderRecursive(BinaryTreeNode root)  
+	{  
+	    if (root == null)  
+	        return;  
+	    else {  
+	    	System.out.print( root.getData() +" "); 
+	    	preOrderRecursive(root.getLeft());   
+	        preOrderRecursive(root.getRight());  
+	    }  
+	} 
+	
+	static void preOrderNonRecursive(BinaryTreeNode root) {
+		
+		BinaryTreeNode currentNode = root;
+		Stack<BinaryTreeNode> binaryTreeStack = new Stack<BinaryTreeNode>();
+		
+		while(true) {
+			while(currentNode != null) {
+				System.out.print( currentNode.getData() +" ");
+				binaryTreeStack.push(currentNode);
+				currentNode = currentNode.getLeft(); 	
+			}
+			
+			if(binaryTreeStack.isEmpty())
+				break;
+			currentNode = binaryTreeStack.pop();
+			currentNode = currentNode.getRight();
+			
+		}
+		
+	}
+	
 	public static void main(String[] args) {
 		
 		BinaryTreeNode binaryTreeNode = new BinaryTreeNode(50);
@@ -82,9 +114,13 @@ public class BinaryTreeOperations {
 		insert(binaryTreeNode, 55);
 		
 		System.out.print("InorderRecursive :  ");
-		InorderRecursive(binaryTreeNode);
+		inOrderRecursive(binaryTreeNode);
 		System.out.print("\nInorderNonRecursive : ");
-		InorderNonRecursive(binaryTreeNode);
+		inOrderNonRecursive(binaryTreeNode);
+		System.out.print("\nPreorderRecursive :  ");
+		preOrderRecursive(binaryTreeNode);
+		System.out.print("\nPreorderNonRecursive : ");
+		preOrderNonRecursive(binaryTreeNode);
 		
 	}
 
