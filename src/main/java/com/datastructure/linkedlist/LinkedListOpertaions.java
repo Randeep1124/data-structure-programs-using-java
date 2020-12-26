@@ -3,7 +3,7 @@ package com.datastructure.linkedlist;
 import java.util.Objects;
 
 public class LinkedListOpertaions {
-	
+
 	private static Node head;
 
 	private Node insertFirst(Node head, Node node) {
@@ -47,7 +47,7 @@ public class LinkedListOpertaions {
 			System.out.println(current);
 		}
 		while (current != null) {
-			System.out.print(current.getData()+" --> ");
+			System.out.print(current.getData() + " --> ");
 			current = current.getNext();
 		}
 		System.out.print("null");
@@ -55,26 +55,60 @@ public class LinkedListOpertaions {
 	}
 
 	private Node deleteFirst(Node head) {
+
+		if (Objects.isNull(head)) {
+			return head;
+		} else {
+			Node current = head;
+			current = current.getNext();
+			head = current;
+		}
 		return head;
 	}
 
 	private Node deleteLast(Node head) {
+
+		if (Objects.isNull(head)) {
+			return head;
+		} else {
+			Node current = head;
+			Node prev = null;
+			while (current.getNext() != null) {
+				prev = current;
+				current = current.getNext();
+			}
+			prev.setNext(null);
+		}
 		return head;
 	}
 
-	private Node deleteNode(Node head) {
+	private Node deleteNode(Node head, int data) {
+		if (Objects.isNull(head)) {
+			return head;
+		} else {
+			Node current = head;
+			Node prev = null;
+			while (current.getNext() != null && current.getData() != data) {
+				prev = current;
+				current = current.getNext();
+			}
+			if (current.getData() == data) {
+				prev.setNext(current.getNext());
+			}
+
+		}
 		return head;
 	}
 
 	private int getSize(Node head) {
 		int size = 0;
 		Node current = head;
-		if(Objects.isNull(current)) {
+		if (Objects.isNull(current)) {
 			return size;
-		}else if (current.getNext() == null) {
+		} else if (current.getNext() == null) {
 			return ++size;
-		}else {
-			while (current!= null) {
+		} else {
+			while (current != null) {
 				current = current.getNext();
 				size++;
 			}
@@ -88,7 +122,6 @@ public class LinkedListOpertaions {
 		head = operation.insertFirst(null, node1);
 		Node node2 = new Node(2, null);
 		head = operation.insertLast(head, node2);
-		System.out.println("size : "+operation.getSize(head));
 		Node node3 = new Node(3, null);
 		head = operation.insertFirst(head, node3);
 		Node node4 = new Node(4, null);
@@ -96,8 +129,19 @@ public class LinkedListOpertaions {
 		Node node5 = new Node(5, null);
 		head = operation.insertFirst(head, node5);
 		operation.display(head);
-		System.out.println("size : "+operation.getSize(head));
-
+		System.out.println("size : " + operation.getSize(head));
+		head = operation.deleteFirst(head);
+		operation.display(head);
+		System.out.println("size : " + operation.getSize(head));
+		head = operation.deleteLast(head);
+		operation.display(head);
+		System.out.println("size : " + operation.getSize(head));
+		head = operation.deleteNode(head, 1);
+		operation.display(head);
+		System.out.println("size : " + operation.getSize(head));
+		head = operation.deleteNode(head, 5);
+		operation.display(head);
+		System.out.println("size : " + operation.getSize(head));
 	}
 
 }
