@@ -6,7 +6,7 @@ public class LinkedListOpertaions {
 
 	private static Node head;
 
-	private Node insertFirst(Node head, Node node) {
+	public Node insertFirst(Node head, Node node) {
 
 		if (Objects.isNull(node)) {
 			return head;
@@ -21,7 +21,7 @@ public class LinkedListOpertaions {
 
 	}
 
-	private Node insertLast(Node head, Node node) {
+	public Node insertLast(Node head, Node node) {
 
 		if (Objects.isNull(node)) {
 			return head;
@@ -41,7 +41,7 @@ public class LinkedListOpertaions {
 		return head;
 	}
 
-	private void display(Node head) {
+	public void display(Node head) {
 		Node current = head;
 		if (getSize(head) == 1) {
 			System.out.println(current);
@@ -54,7 +54,7 @@ public class LinkedListOpertaions {
 		System.out.println();
 	}
 
-	private Node deleteFirst(Node head) {
+	public Node deleteFirst(Node head) {
 
 		if (Objects.isNull(head)) {
 			return head;
@@ -66,7 +66,7 @@ public class LinkedListOpertaions {
 		return head;
 	}
 
-	private Node deleteLast(Node head) {
+	public Node deleteLast(Node head) {
 
 		if (Objects.isNull(head)) {
 			return head;
@@ -82,7 +82,7 @@ public class LinkedListOpertaions {
 		return head;
 	}
 
-	private Node deleteNode(Node head, int data) {
+	public Node deleteNode(Node head, int data) {
 		if (Objects.isNull(head)) {
 			return head;
 		} else {
@@ -100,7 +100,7 @@ public class LinkedListOpertaions {
 		return head;
 	}
 
-	private int getSize(Node head) {
+	public int getSize(Node head) {
 		int size = 0;
 		Node current = head;
 		if (Objects.isNull(current)) {
