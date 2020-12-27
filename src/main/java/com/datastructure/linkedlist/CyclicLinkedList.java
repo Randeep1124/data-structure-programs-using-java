@@ -23,13 +23,12 @@ public class CyclicLinkedList {
 				index++;
 				if (p1.getNext() != null)
 					p1 = p1.getNext();
-				
-				if(p1==p2)
-				{
+
+				if (p1 == p2) {
 					cyclic = true;
 					break;
 				}
-				
+
 			}
 
 			if (cyclic) {
@@ -50,7 +49,7 @@ public class CyclicLinkedList {
 		head = operation.insertLast(head, node3);
 		Node node4 = new Node(4, null);
 		head = operation.insertLast(head, node4);
-		//head = operation.insertLast(head, node1);
+		// head = operation.insertLast(head, node1);
 		findCyclicLinkedList(head);
 	}
 
